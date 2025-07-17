@@ -1,28 +1,27 @@
-# Data Backup Support Chatbot
+# ☁️ Cloud Services Support Chatbot
 
-## Project Description
-A beginner-friendly chatbot that helps users back up and recover their data with simple, clear instructions. It guides users through common backup methods and basic recovery steps to protect important files and prevent data loss.
+## Project Description  
+A beginner-friendly chatbot that assists users in understanding and using cloud services. It provides clear, guided answers to common questions about storage, hosting, cloud providers, and troubleshooting — all in simple, non-technical language.
 
-## Scope
-This chatbot focuses on assisting beginner users with understanding and performing data backup and recovery. It covers cloud backups, external drives, and simple troubleshooting.
+## Scope  
+This chatbot is designed for non-technical users who want to explore and benefit from cloud services without the confusion. It covers topics such as:
 
-## Goals
-- Provide easy-to-follow backup and recovery guidance  
-- Make data protection accessible for non-technical users  
-- Offer quick answers to common backup questions  
+- Cloud storage (e.g., Google Drive, OneDrive, Dropbox)
+- Cloud hosting and computing (e.g., AWS, Azure, DigitalOcean)
+- Setting up basic services
+- Cost and provider comparisons
+- Basic troubleshooting tips
 
-## MVP Features
-- Chat interface for interaction  
-- Retrieval of FAQs related to backup and recovery  
-- GPT-powered explanations in simple language  
-- Suggestions for backup tools and methods  
-- Basic troubleshooting support  
+## Goals  
+- Help users confidently explore cloud services  
+- Provide clear, jargon-free explanations  
+- Recommend reliable platforms and tools  
+- Offer quick help for common cloud-related issues
 
-## Getting Started
-1. Clone the repository  
-2. Follow setup instructions in the docs (to be added)  
-3. Start the chatbot and begin interacting  
+## MVP Features  
+-  Chat interface for interactive help  
+-  FAQ retrieval system for cloud topics  
+-  GPT-powered chatbot responses  
+-  Suggestions for tools and cloud providers  
+-  Basic troubleshooting support  
 
----
-
-*Created by Sara Nizar Khayat*
