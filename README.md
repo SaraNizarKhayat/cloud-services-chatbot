@@ -9,7 +9,6 @@ This chatbot is designed for non-technical users who want to explore and benefit
 - Cloud storage (e.g., Google Drive, OneDrive, Dropbox)
 - Cloud hosting and computing (e.g., AWS, Azure, DigitalOcean)
 - Setting up basic services
-- Cost and provider comparisons
 - Basic troubleshooting tips
 
 ## Goals  
