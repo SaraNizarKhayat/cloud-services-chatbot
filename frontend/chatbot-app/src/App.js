@@ -1,41 +1,34 @@
 // frontend/src/App.js
 
-import React, { useState, useCallback, useRef } from 'react'; // Added useRef here
-import './App.css'; // For global body styles
-import './Chat.css'; // For all chat and cloud specific styles
+import React, { useState, useCallback, useRef } from 'react';
+import './App.css';
+import './Chat.css';
 
-import Chat from './Chat'; // Import our Chat component
-import CloudBackground from './CloudBackground'; // Import the new CloudBackground component
+import Chat from './Chat';
+import CloudBackground from './CloudBackground';
 
 function App() {
-  const [cloudQuestionToSend, setCloudQuestionToSend] = useState(null);
-  const chatRef = useRef(null); // Ref to access methods of the Chat component
+  const [cloudQuestionToSend, setCloudQuestionToSend] = useState(null); // Keep this
+  const [refreshCloudBackground, setRefreshCloudBackground] = useState(0); // New state for trigger
+  const chatRef = useRef(null);
 
-  // Callback to handle clicks from clouds
   const handleCloudClick = useCallback((question) => {
-    // This function will directly send the message to the backend
-    // and then update the Chat component's messages state.
     if (chatRef.current) {
       chatRef.current.sendSpecificMessage(question);
     }
   }, []);
 
-  // Callback for when a message is sent from the Chat component
   const handleMessageSent = useCallback(() => {
-    // This will trigger CloudBackground to re-fetch questions
-    // by changing the key or a state prop if needed.
-    // For now, we'll just rely on CloudBackground's internal useEffect [onCloudClick]
-    // which will be triggered by CloudBackground's fetchRandomQuestions being called.
-    // A simpler way is to just pass a counter or a specific trigger to CloudBackground.
-    // Let's pass a simple state update to CloudBackground to trigger re-fetch.
-    setCloudQuestionToSend(null); // Clear the question after it's processed
+    // Increment a counter to trigger re-fetch in CloudBackground
+    setRefreshCloudBackground(prev => prev + 1);
+    setCloudQuestionToSend(null); // Still clear this if it was a temporary state
   }, []);
 
   return (
     <div className="App">
-      {/* CloudBackground is a sibling to Chat, so it positions relative to body */}
-      <CloudBackground onCloudClick={handleCloudClick} /> {/* Pass the function to CloudBackground */}
-      <Chat ref={chatRef} onSendMessage={handleMessageSent} /> {/* Pass ref to Chat */}
+      {/* Pass the new state as a prop to trigger CloudBackground's useEffect */}
+      <CloudBackground onCloudClick={handleCloudClick} refreshTrigger={refreshCloudBackground} />
+      <Chat ref={chatRef} onSendMessage={handleMessageSent} />
     </div>
   );
 }

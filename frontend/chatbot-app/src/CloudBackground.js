@@ -35,7 +35,7 @@ function CloudBackground({ onCloudClick }) {
         // Generate a random size for the cloud (e.g., 100px to 160px)
         const minSize = 70;
         const maxSize = 70;
-        const sizePx = Math.random() * (maxSize - minSize) + minSize;
+        // const sizePx = Math.random() * (maxSize - minSize) + minSize; // Removed: sizePx is no longer used
 
         // AGGRESSIVE POSITIONING: Allow clouds to spawn far off-screen
         // This range (-100% to 200%) means clouds can start and end completely off-screen,
@@ -59,7 +59,7 @@ function CloudBackground({ onCloudClick }) {
               zIndex: Math.floor(Math.random() * 5) + 1 // Random z-index for layering
             }}
             onClick={() => onCloudClick(q)} // Call the prop function on click
-          ><div className="cloud-text"> 
+          ><div className="cloud-text">
               {q}
             </div>
           </div>
