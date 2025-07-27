@@ -1,7 +1,3 @@
-Understood\! Let's create a comprehensive `README.md` file for your project. This guide will walk users through setting up both the FastAPI backend and the React frontend step-by-step.
-
------
-
 # Chatbot Project
 
 This project consists of two main parts: a **FastAPI backend** that hosts a conversational AI, and a **React frontend** that provides a user interface for interacting with the chatbot.
@@ -229,8 +225,3 @@ This will typically open your React application in your browser at `http://local
   * [FAISS](https://faiss.ai/)
   * [Sentence Transformers](https://www.sbert.net/)
 
-## 9\. License
-
-[Choose and specify your license, e.g., MIT License, Apache 2.0, etc.]
-
------
