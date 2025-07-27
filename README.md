@@ -17,7 +17,6 @@ This project consists of two main parts: a **FastAPI backend** that hosts a conv
 6.  [Usage](https://www.google.com/search?q=%23usage)
 7.  [Troubleshooting](https://www.google.com/search?q=%23troubleshooting)
 8.  [Acknowledgements](https://www.google.com/search?q=%23acknowledgements)
-9.  [License](https://www.google.com/search?q=%23license)
 
 ## 1\. Features
 
@@ -41,33 +40,7 @@ Before you begin, ensure you have the following installed on your machine:
   * **Git (Optional but recommended)**: For cloning the repository.
       * [Download Git](https://git-scm.com/downloads)
 
-## 3\. Project Structure
-
-Assuming your project has a structure similar to this:
-
-```
-chatbot-project/
-├── backend/
-│   ├── main.py             # Your FastAPI application
-│   ├── requirements.txt    # Python dependencies
-│   ├── chatbot_core.py     # Contains ChatbotCore class and logic
-│   └── data/
-│       ├── cloud_services_faq.csv  # Your FAQ data
-│       └── embeddings_faq.npy      # Pre-computed embeddings
-│   └── ... (other backend files)
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── ... (your React components like ChatInterface.js)
-│   ├── package.json        # Node.js/React dependencies
-│   └── ... (other frontend files)
-├── README.md               # This file
-└── .gitignore
-```
-
-## 4\. Backend Setup (FastAPI)
+## 3\. Backend Setup (FastAPI)
 
 Navigate to the `backend` directory to set up the API.
 
@@ -75,42 +48,29 @@ Navigate to the `backend` directory to set up the API.
 
 1.  **Clone the repository (if you haven't already):**
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/SaraNizarKhayat/cloud-services-chatbot.git
     cd chatbot-project
     ```
-2.  **Navigate into the `backend` directory:**
+2.  **Install the required Python packages:**
+```bash
+pip install -r requirements.txt
+```
+ * **Note:** Ensure your `requirements.txt` is updated with the correct dependencies, especially if `chatbot_core.py` has specific machine learning libraries. It should look like this:
+   ```
+   fastapi==0.111.0
+   uvicorn==0.30.1
+   pydantic==2.8.2
+   python-multipart==0.0.9
+   pandas==2.2.2
+   numpy==1.26.4
+   faiss-cpu==1.8.0 # Or faiss-gpu if you have a GPU
+   sentence-transformers==2.7.0
+   ```
+
+3.  **Navigate into the `backend` directory:**
     ```bash
     cd backend
     ```
-3.  **Create a Python virtual environment (highly recommended):**
-    ```bash
-    python -m venv venv
-    ```
-4.  **Activate the virtual environment:**
-      * **On Windows:**
-        ```bash
-        .\venv\Scripts\activate
-        ```
-      * **On macOS/Linux:**
-        ```bash
-        source venv/bin/activate
-        ```
-5.  **Install the required Python packages:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-      * **Note:** Ensure your `requirements.txt` is updated with the correct dependencies, especially if `chatbot_core.py` has specific machine learning libraries. It should look like this:
-        ```
-        fastapi==0.111.0
-        uvicorn==0.30.1
-        pydantic==2.8.2
-        python-multipart==0.0.9
-        pandas==2.2.2
-        numpy==1.26.4
-        faiss-cpu==1.8.0 # Or faiss-gpu if you have a GPU
-        sentence-transformers==2.7.0
-        ```
-
 ### Running the Backend
 
 Once all dependencies are installed, you can start the FastAPI server:
@@ -118,11 +78,10 @@ Once all dependencies are installed, you can start the FastAPI server:
 ```bash
 uvicorn main:app --reload --port 8500
 ```
-
-  * `main`: Refers to your `main.py` file. If your FastAPI app is in a different file (e.g., `app.py`), change `main` to `app`.
-  * `app`: Refers to the FastAPI application instance (e.g., `app = FastAPI()`).
-  * `--reload`: Automatically reloads the server on code changes (useful for development).
-  * `--port 8500`: Specifies the port for the server.
+or
+```bash
+python -m uvicorn chatbot_api:app --host 127.0.0.1 --port 8000 --reload
+```
 
 You should see output indicating the server is running, typically on `http://127.0.0.1:8500`.
 You can verify the API is running by visiting the Swagger UI: `http://127.0.0.1:8500/docs`
@@ -152,9 +111,9 @@ Open a **new terminal window** and navigate to the `frontend` directory to set u
 
 1.  **Navigate into the `frontend` directory:**
     ```bash
-    cd ../frontend # If you are in the backend directory
+    cd ../frontend/chatbot-app # If you are in the backend directory
     # OR
-    cd chatbot-project/frontend # If you are in the project root
+    cd chatbot-project/frontend/chatbot-app # If you are in the project root
     ```
 2.  **Install the Node.js dependencies:**
     ```bash
@@ -187,7 +146,7 @@ This will typically open your React application in your browser at `http://local
   * **"Connection refused" or "Not Found" errors on the frontend:**
       * **Solution:** Ensure your FastAPI backend is running on `http://127.0.0.1:8500`. Check the terminal where you started the backend for any errors.
   * **CORS errors ("Cross-Origin Request Blocked"):**
-      * **Solution:** Verify that CORS is correctly configured in your FastAPI `main.py` file to allow requests from `http://localhost:3000`.
+      * **Solution:** Verify that CORS is correctly configured in your FastAPI `chatbot_core.py` file to allow requests from `http://localhost:3000`.
         ```python
         from fastapi.middleware.cors import CORSMiddleware
 
@@ -207,8 +166,6 @@ This will typically open your React application in your browser at `http://local
         )
         ```
       * **Remember to restart your FastAPI server after making CORS changes.**
-  * **"422 Unprocessable Entity" errors from FastAPI:**
-      * **Solution:** This usually means the data sent from your React frontend does not match the `Query` Pydantic model expected by your FastAPI `/chat` endpoint. Ensure your React code sends data in the format `{"message": "your_text_here"}`.
   * **"ModuleNotFoundError" when running the backend:**
       * **Solution:** You're missing a Python dependency. Activate your virtual environment (`source venv/bin/activate` or `.\venv\Scripts\activate`) and run `pip install -r requirements.txt` again. Double-check that all required libraries (especially those used by `chatbot_core.py`) are listed in `requirements.txt`.
   * **`faiss` installation issues:**
