@@ -20,7 +20,6 @@ This chatbot is designed for non-technical users who want to explore and benefit
 ## MVP Features  
 -  Chat interface for interactive help  
 -  FAQ retrieval system for cloud topics  
--  GPT-powered chatbot responses  
 -  Suggestions for tools and cloud providers  
 -  Basic troubleshooting support  
 
