@@ -4,19 +4,19 @@ This project consists of two main parts: a **FastAPI backend** that hosts a conv
 
 ## Table of Contents
 
-1.  [Features](https://www.google.com/search?q=%23features)
-2.  [Prerequisites](https://www.google.com/search?q=%23prerequisites)
-3.  [Project Structure](https://www.google.com/search?q=%23project-structure)
-4.  [Backend Setup (FastAPI)](https://www.google.com/search?q=%23backend-setup-fastapi)
-      * [Installation](https://www.google.com/search?q=%23installation)
-      * [Running the Backend](https://www.google.com/search?q=%23running-the-backend)
-      * [API Endpoints](https://www.google.com/search?q=%23api-endpoints)
-5.  [Frontend Setup (React)](https://www.google.com/search?q=%23frontend-setup-react)
-      * [Installation](https://www.google.com/search?q=%23installation-1)
-      * [Running the Frontend](https://www.google.com/search?q=%23running-the-frontend)
-6.  [Usage](https://www.google.com/search?q=%23usage)
-7.  [Troubleshooting](https://www.google.com/search?q=%23troubleshooting)
-8.  [Acknowledgements](https://www.google.com/search?q=%23acknowledgements)
+1.  Features
+2.  Prerequisites
+3.  Project Structure
+4.  Backend Setup (FastAPI)
+      * Installation
+      * Running the Backend
+      * API Endpoints
+5.  Frontend Setup (React)
+      * Installation
+      * Running the Frontend
+6.  Usage
+7.  Troubleshooting
+8.  Acknowledgements
 
 ## 1\. Features
 
